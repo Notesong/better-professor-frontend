@@ -1,0 +1,138 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #202020;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(92, 163, 245);
+}
+
+.center { 
+    text-align:center;
+}
+
+.App {
+    padding: 0 1rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.login, .signup, .reminder-form, .temp-student-form {
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: 400px;
+      
+        .form {
+            display: flex;
+            border: 1px solid #ddd;
+            flex-direction: column;
+            padding: 20px;
+        }
+    
+        input, select {
+            margin: 15px 0;
+            padding: 10px;
+            width: auto;
+        }
+}
+  
+.error {
+    color: red;
+    margin-top: 0;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+
+    input, select {
+        margin: 5px 0;
+        padding: 5px;
+        width: auto;
+    }
+    
+    .submit {
+        padding: 5px;
+        margin: 0;
+    }
+
+}
+
+.reminder-form {
+    textarea {
+        margin: 1rem 0 1rem 0;
+        height: 200px;
+    }
+
+    .rdt, select {
+        display: inline-block;
+        margin-left: 1rem;
+    }
+
+    input {
+        margin-left: 1rem;
+    }
+}
+
+.reminder {
+    border: 1px solid #ddd;
+    width: 300px;
+    padding: 1rem;
+    margin: 1rem;
+
+    h3, h5 {
+        text-align: center;
+    }
+
+    p {
+        padding-top: 2rem;
+    }
+
+    .message_delete {
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+
+    .top-of-reminder {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .edit-button {
+        padding: 5px;
+        margin: 0;
+    }
+    
+    .reminder-edit-form-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 1rem;
+    }
+}
+
+button {
+    background-color: rgb(24, 62, 131);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.logout {
+    color: white;
+}
+
+.reminder_list {
+    display: flex;
+    flex-wrap: wrap;
+}
