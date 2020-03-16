@@ -15,7 +15,11 @@ export const Logout = () => {
   return (
     <>
       {/* Only logout show button if logged in */}
-      {!loggedIn ? "" : <button onClick={logout}>Logout</button>}
+      {!loggedIn ? (
+        <button onClick={logout}>Login</button>
+      ) : (
+        <button onClick={logout}>Logout</button>
+      )}
     </>
   );
 };

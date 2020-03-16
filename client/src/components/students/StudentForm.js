@@ -50,11 +50,11 @@ export default function StudentForm() {
   return (
     <div className="student-form">
       <form className="form" onSubmit={onSubmit}>
-        <h3 className="center">Add Student</h3>
+        <h3 className="center">Add a Student</h3>
         {error && <p className="error center">{error}</p>}
         <input
           type="text"
-          placeholder="username"
+          placeholder="student name"
           onChange={e => setName(e.target.value)}
           value={name}
         />
