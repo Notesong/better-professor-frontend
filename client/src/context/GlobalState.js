@@ -59,6 +59,20 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function deleteStudent(student) {
+    dispatch({
+      type: "DELETE_STUDENT",
+      payload: student
+    });
+  }
+
+  function editStudent(student) {
+    dispatch({
+      type: "EDIT_STUDENT",
+      payload: student
+    });
+  }
+
   function toggleLoggedIn() {
     dispatch({
       type: "TOGGLE_LOGGED_IN"
@@ -79,6 +93,8 @@ export const GlobalProvider = ({ children }) => {
         editReminder,
         setStudents,
         addStudent,
+        deleteStudent,
+        editStudent,
         toggleLoggedIn
       }}
     >

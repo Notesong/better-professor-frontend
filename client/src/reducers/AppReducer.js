@@ -51,6 +51,16 @@ export default (state, action) => {
         ...state,
         students: [action.payload, ...state.students]
       };
+    case "DELETE_STUDENT":
+      return {
+        ...state,
+        students: [action.payload, ...state.students]
+      };
+    case "EDIT_STUDENT":
+      return {
+        ...state,
+        students: [action.payload, ...state.students]
+      };
     default:
       return state;
   }

@@ -137,21 +137,24 @@ a {
 }
 
 ////////////////////////////////////////////////////////////////
-// reminders
+// reminders and students
 
-.reminders {
+.reminders,
+.students {
   display: flex;
   align-items: flex-start;
 }
 
-.reminder_list {
+.reminder_list,
+.student_list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.reminder {
+.reminder,
+.student {
   border: 1px solid #ddd;
-  width: 300px;
+  width: 250px;
   padding: 1rem;
   margin: 3rem;
 
@@ -164,23 +167,32 @@ a {
     padding-top: 2rem;
   }
 
-  .top-of-reminder {
+  .top-of-reminder,
+  .top-of-student {
     display: flex;
     justify-content: flex-end;
   }
 
   .edit-button,
-  .message-delete-button {
+  .message-delete-button,
+  .student-delete-button {
     padding: 5px;
     margin: 0;
     margin-left: 1rem;
     font-size: 0.8rem;
   }
 
-  .reminder-edit-form-buttons {
+  .edit-form-buttons {
     display: flex;
     justify-content: space-around;
     margin-top: 1rem;
+  }
+}
+
+.student {
+  p {
+    padding: 0.1rem;
+    font-size: 0.8rem;
   }
 }
 
