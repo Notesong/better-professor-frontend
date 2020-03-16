@@ -2,6 +2,15 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #202020;
   color: white;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+}
+
+h1,
+a,
+button {
+  font-family: "PT Mono", monospace;
 }
 
 a {
@@ -13,11 +22,9 @@ a {
   text-align: center;
 }
 
-.App {
-  padding: 0 1rem;
-}
-
 .header {
+  background-color: rgb(73, 73, 73);
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
 }
@@ -25,7 +32,7 @@ a {
 .login,
 .signup,
 .reminder-form,
-.temp-student-form {
+.student-form {
   margin: 0 auto;
   margin-top: 3rem;
   width: 400px;
@@ -141,4 +148,33 @@ button {
 .reminder_list {
   display: flex;
   flex-wrap: wrap;
+}
+
+.dashboard {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin: 2rem;
+  }
+
+  a {
+    font-size: 2rem;
+    color: white;
+  }
+
+  .students_link {
+    background-color: rgb(92, 91, 91);
+  }
+
+  .reminders_link {
+    background-color: rgb(59, 59, 104);
+  }
 }

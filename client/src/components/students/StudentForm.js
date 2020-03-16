@@ -48,7 +48,7 @@ export default function StudentForm() {
   };
 
   return (
-    <div className="temp-student-form">
+    <div className="student-form">
       <form className="form" onSubmit={onSubmit}>
         <h3 className="center">Add Student</h3>
         {error && <p className="error center">{error}</p>}

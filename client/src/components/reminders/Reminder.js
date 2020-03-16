@@ -6,7 +6,7 @@ import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 import { GlobalContext } from "../../context/GlobalState";
 
-import "../../react-datetime.scss";
+import "../../styles/react-datetime.scss";
 
 const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
   const { editReminder, deleteReminder, students } = useContext(GlobalContext);
