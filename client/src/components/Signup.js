@@ -52,7 +52,7 @@ export default function Signup({ history }) {
           onChange={e => setPassword(e.currentTarget.value)}
         />
         <button className="submit" type="submit" disabled={isLoading}>
-          {isLoading ? "Submitting..." : "Submit"}
+          {isLoading ? "Submitting..." : "Sign Up"}
         </button>
       </form>
       <p className="center">
