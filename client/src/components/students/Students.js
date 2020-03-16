@@ -5,9 +5,9 @@ import StudentForm from "./StudentForm";
 
 function Students() {
   return (
-    <div>
-      <StudentList />
+    <div className="students">
       <StudentForm />
+      <StudentList />
     </div>
   );
 }

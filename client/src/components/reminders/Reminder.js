@@ -147,7 +147,7 @@ const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
             onChange={e => setMessage(e.currentTarget.value)}
             placeholder="your message"
           />
-          <div className="reminder-edit-form-buttons">
+          <div className="edit-form-buttons">
             <button className="submit" type="submit" disabled={isLoading}>
               {isLoading ? "Submitting..." : "Submit"}
             </button>
