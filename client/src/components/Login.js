@@ -52,7 +52,6 @@ export default function Login({ history }) {
       )}
       <form className="form" onSubmit={onSubmit}>
         {error && <p className="error center">{error}</p>}
-        <p>Login</p>
         <input
           type="text"
           placeholder="username"

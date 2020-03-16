@@ -38,7 +38,6 @@ export default function Signup({ history }) {
       {localStorage.getItem("token") ? <Redirect to="/dashboard" /> : ""}
       <form className="form" onSubmit={onSubmit}>
         {error && <p className="error center">{error}</p>}
-        <p>Signup</p>
         <input
           type="text"
           placeholder="username"

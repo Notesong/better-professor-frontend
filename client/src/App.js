@@ -12,7 +12,6 @@ import { Reminders } from "./components/reminders/Reminders";
 
 import { GlobalProvider } from "./context/GlobalState";
 
-import "./styles/App.css";
 import "./styles/styles.scss";
 
 function App() {
