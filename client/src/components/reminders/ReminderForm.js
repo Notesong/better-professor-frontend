@@ -24,7 +24,7 @@ export default function ReminderForm() {
     // gets the student list so that the user can select a student to send the message to
     const getStudentList = async () => {
       await axiosWithAuth()
-        .get(`/restricted/users/${localStorage.getItem("id")}/students/`)
+        .get(`/restricted/users/${sessionStorage.getItem("id")}/students/`)
         .then(res => {
           if (res.data.length > 0) {
             setStudents(res.data);
@@ -55,7 +55,7 @@ export default function ReminderForm() {
     showLoader(true);
 
     axiosWithAuth()
-      .post(`/restricted/users/${localStorage.getItem("id")}/messages`, {
+      .post(`/restricted/users/${sessionStorage.getItem("id")}/messages`, {
         title: title,
         message: message,
         send_date: sendDate.format(),

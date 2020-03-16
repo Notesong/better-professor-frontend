@@ -8,7 +8,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
       render={routeProps => {
         // check for token, if there, return component
         // otherwise return to login page
-        if (localStorage.getItem("token")) {
+        if (sessionStorage.getItem("token")) {
           return <Component {...routeProps} />;
         } else {
           return <Redirect to="/" />;

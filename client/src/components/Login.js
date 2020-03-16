@@ -27,22 +27,22 @@ export default function Login({ history }) {
     axiosWithAuth()
       .post("/auth/login", { username: username, password: password })
       .then(res => {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("id", res.data.user_id);
+        sessionStorage.setItem("token", res.data.token);
+        sessionStorage.setItem("id", res.data.user_id);
         formReset();
         toggleLoggedIn();
         history.push("/dashboard");
       })
       .catch(err => {
         setError("Incorrect username or password.");
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         formReset();
       });
   };
 
   return (
     <div className="login">
-      {localStorage.getItem("token") ? (
+      {sessionStorage.getItem("token") ? (
         <>
           {toggleLoggedIn()}
           <Redirect to="/dashboard" />

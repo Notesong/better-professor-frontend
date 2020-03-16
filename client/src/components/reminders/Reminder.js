@@ -37,7 +37,7 @@ const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
 
     // submit the edited reminder to the API
     axiosWithAuth()
-      .put(`/restricted/users/${localStorage.getItem("id")}/messages/${id}`, {
+      .put(`/restricted/users/${sessionStorage.getItem("id")}/messages/${id}`, {
         title: title,
         message: message,
         send_date: sendDate.format(),
@@ -73,7 +73,7 @@ const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
   function delReminder(reminder_id) {
     axiosWithAuth()
       .delete(
-        `/restricted/users/${localStorage.getItem(
+        `/restricted/users/${sessionStorage.getItem(
           "id"
         )}/messages/${reminder_id}`
       )

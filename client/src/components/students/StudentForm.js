@@ -31,7 +31,7 @@ export default function StudentForm() {
     showLoader(true);
 
     axiosWithAuth()
-      .post(`/restricted/users/${localStorage.getItem("id")}/students`, {
+      .post(`/restricted/users/${sessionStorage.getItem("id")}/students`, {
         name: name,
         major: major,
         email: email,

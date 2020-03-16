@@ -15,7 +15,7 @@ export const ReminderList = () => {
     // gets all the reminders from the API
     const getReminderList = async () => {
       await axiosWithAuth()
-        .get(`/restricted/users/${localStorage.getItem("id")}/messages/`)
+        .get(`/restricted/users/${sessionStorage.getItem("id")}/messages/`)
         .then(res => {
           setReminders(res.data);
         })

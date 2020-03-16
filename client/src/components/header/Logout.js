@@ -8,7 +8,7 @@ export const Logout = () => {
   // logout function that clears local storage and returns user to the login form
   function logout(e) {
     e.preventDefault();
-    localStorage.clear();
+    sessionStorage.clear();
     toggleLoggedIn();
     window.location.href = "/";
   }

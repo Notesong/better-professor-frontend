@@ -28,14 +28,14 @@ export default function Signup({ history }) {
       })
       .catch(err => {
         setError("Invalid username or password.");
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         formReset();
       });
   };
 
   return (
     <div className="signup">
-      {localStorage.getItem("token") ? <Redirect to="/dashboard" /> : ""}
+      {sessionStorage.getItem("token") ? <Redirect to="/dashboard" /> : ""}
       <form className="form" onSubmit={onSubmit}>
         {error && <p className="error center">{error}</p>}
         <input
