@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 import Reminder from "./Reminder";
 
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState";
 
 export const ReminderList = () => {
   const { reminders, setReminders } = useContext(GlobalContext);
@@ -15,7 +15,7 @@ export const ReminderList = () => {
     // gets all the reminders from the API
     const getReminderList = async () => {
       await axiosWithAuth()
-        .get(`/restricted/users/${localStorage.getItem("id")}/messages/`)
+        .get(`/restricted/users/${sessionStorage.getItem("id")}/messages/`)
         .then(res => {
           setReminders(res.data);
         })

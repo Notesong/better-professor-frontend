@@ -2,7 +2,7 @@ export default (state, action) => {
   switch (action.type) {
     // login check and toggle reducer
     case "TOGGLE_LOGGED_IN":
-      if (localStorage.getItem("token")) {
+      if (sessionStorage.getItem("token")) {
         return {
           ...state,
           loggedIn: true

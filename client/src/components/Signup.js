@@ -28,37 +28,38 @@ export default function Signup({ history }) {
       })
       .catch(err => {
         setError("Invalid username or password.");
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         formReset();
       });
   };
 
   return (
-    <div className="signup">
-      {localStorage.getItem("token") ? <Redirect to="/dashboard" /> : ""}
-      <form className="form" onSubmit={onSubmit}>
-        {error && <p className="error center">{error}</p>}
-        <p>Signup</p>
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={e => setUsername(e.currentTarget.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          autoComplete="new-password"
-          value={password}
-          onChange={e => setPassword(e.currentTarget.value)}
-        />
-        <button className="submit" type="submit" disabled={isLoading}>
-          {isLoading ? "Submitting..." : "Submit"}
-        </button>
-      </form>
-      <p className="center">
-        <Link to={`/`}>Already a user?</Link>
-      </p>
+    <div className="signup-page">
+      <div className="signup">
+        {sessionStorage.getItem("token") ? <Redirect to="/dashboard" /> : ""}
+        <form className="form" onSubmit={onSubmit}>
+          {error && <p className="error center">{error}</p>}
+          <input
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={e => setUsername(e.currentTarget.value)}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={e => setPassword(e.currentTarget.value)}
+          />
+          <button className="submit" type="submit" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "Sign Up"}
+          </button>
+        </form>
+        <p className="center">
+          <Link to={`/`}>Already a user?</Link>
+        </p>
+      </div>
     </div>
   );
 }

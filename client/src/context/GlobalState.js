@@ -3,7 +3,7 @@ import AppReducer from "../reducers/AppReducer";
 
 // Initial state
 const initialState = {
-  loggedIn: false,
+  loggedIn: Boolean(sessionStorage.getItem("token")),
   students: [],
   reminders: [],
   projects: []
