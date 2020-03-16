@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import DateTime from "react-datetime";
 import Moment from "moment";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState";
 
-import "../react-datetime.scss";
+import "../../react-datetime.scss";
 
 export default function ReminderForm() {
   const { addReminder, students, setStudents } = useContext(GlobalContext);

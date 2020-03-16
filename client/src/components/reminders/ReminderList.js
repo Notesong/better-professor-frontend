@@ -1,9 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 
 import Reminder from "./Reminder";
 
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState";
 
 export const ReminderList = () => {
   const { reminders, setReminders } = useContext(GlobalContext);

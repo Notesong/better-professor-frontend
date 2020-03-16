@@ -7,9 +7,8 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { MentorDashboard } from "./components/MentorDashboard";
 import ProtectedRoute from "./components/ProtectedRoute.js";
-import { StudentList } from "./components/StudentList";
-import { Student } from "./components/Student";
-import { Reminders } from "./components/Reminders";
+import Students from "./components/students/Students";
+import { Reminders } from "./components/reminders/Reminders";
 
 import { GlobalProvider } from "./context/GlobalState";
 
@@ -26,9 +25,7 @@ function App() {
             <Route exact path="/" component={Login} />
             <Route path="/signup" component={Signup} />
             <ProtectedRoute path="/dashboard" component={MentorDashboard} />
-            <ProtectedRoute path="/studentlist" component={StudentList} />
-            {/* https://stackoverflow.com/questions/42886626/how-to-pass-props-state-through-link-and-route-react-js */}
-            <ProtectedRoute path="/student/:type" component={Student} />
+            <ProtectedRoute path="/students" component={Students} />
             <ProtectedRoute path="/reminders" component={Reminders} />
           </Switch>
         </div>
