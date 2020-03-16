@@ -1,3 +1,6 @@
+////////////////////////////////////////////////////////////////
+// general styles
+
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #202020;
@@ -22,11 +25,20 @@ a {
   text-align: center;
 }
 
+////////////////////////////////////////////////////////////////
+// header and navagation
+
 .header {
   background-color: rgb(73, 73, 73);
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+
+  h1 {
+    font-size: 3.5vh;
+  }
 
   .navbar {
     display: flex;
@@ -36,21 +48,46 @@ a {
     a {
       margin: 0 1rem;
       color: rgb(240, 239, 239);
+      font-size: 2.2vh;
     }
   }
 }
+
+////////////////////////////////////////////////////////////////
+// login and signup pages
+
+.login-page {
+  background: url(/images/marvin-meyer-SYTO3xs06fU-unsplash.jpg);
+}
+
+.signup-page {
+  background: url(/images/neonbrand-uEcSKKDB1pg-unsplash.jpg);
+}
+
+.login-page,
+.signup-page {
+  height: 90vh;
+  background-size: cover;
+  background-color: #fff;
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+////////////////////////////////////////////////////////////////
+// forms
 
 .login,
 .signup,
 .reminder-form,
 .student-form {
-  margin: 0 auto;
-  margin-top: 3rem;
   width: 400px;
+  opacity: 1;
+  background-color: #202020;
 
   .form {
     display: flex;
-    border: 1px solid #ddd;
     flex-direction: column;
     padding: 3rem;
   }
@@ -61,6 +98,13 @@ a {
     padding: 10px;
     width: auto;
   }
+}
+
+.login,
+.signup {
+  padding-bottom: 1rem;
+  border: 1px solid #ddd;
+  padding-top: 1rem;
 }
 
 .error {
@@ -102,6 +146,9 @@ a {
   }
 }
 
+////////////////////////////////////////////////////////////////
+// reminders
+
 .reminder {
   border: 1px solid #ddd;
   width: 300px;
@@ -139,6 +186,14 @@ a {
   }
 }
 
+.reminder_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+////////////////////////////////////////////////////////////////
+// buttons
+
 button {
   background-color: rgb(47, 76, 129);
   border: none;
@@ -152,14 +207,8 @@ button {
   margin: 1rem 0;
 }
 
-.logout {
-  color: rgb(240, 239, 239);
-}
-
-.reminder_list {
-  display: flex;
-  flex-wrap: wrap;
-}
+////////////////////////////////////////////////////////////////
+// dashboard
 
 .dashboard {
   margin-top: 2rem;

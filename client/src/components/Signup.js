@@ -34,30 +34,32 @@ export default function Signup({ history }) {
   };
 
   return (
-    <div className="signup">
-      {sessionStorage.getItem("token") ? <Redirect to="/dashboard" /> : ""}
-      <form className="form" onSubmit={onSubmit}>
-        {error && <p className="error center">{error}</p>}
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={e => setUsername(e.currentTarget.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          autoComplete="new-password"
-          value={password}
-          onChange={e => setPassword(e.currentTarget.value)}
-        />
-        <button className="submit" type="submit" disabled={isLoading}>
-          {isLoading ? "Submitting..." : "Sign Up"}
-        </button>
-      </form>
-      <p className="center">
-        <Link to={`/`}>Already a user?</Link>
-      </p>
+    <div className="signup-page">
+      <div className="signup">
+        {sessionStorage.getItem("token") ? <Redirect to="/dashboard" /> : ""}
+        <form className="form" onSubmit={onSubmit}>
+          {error && <p className="error center">{error}</p>}
+          <input
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={e => setUsername(e.currentTarget.value)}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={e => setPassword(e.currentTarget.value)}
+          />
+          <button className="submit" type="submit" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "Sign Up"}
+          </button>
+        </form>
+        <p className="center">
+          <Link to={`/`}>Already a user?</Link>
+        </p>
+      </div>
     </div>
   );
 }

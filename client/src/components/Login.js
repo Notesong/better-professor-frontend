@@ -41,37 +41,39 @@ export default function Login({ history }) {
   };
 
   return (
-    <div className="login">
-      {sessionStorage.getItem("token") ? (
-        <>
-          {toggleLoggedIn()}
-          <Redirect to="/dashboard" />
-        </>
-      ) : (
-        ""
-      )}
-      <form className="form" onSubmit={onSubmit}>
-        {error && <p className="error center">{error}</p>}
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={e => setUsername(e.currentTarget.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          autoComplete="new-password"
-          value={password}
-          onChange={e => setPassword(e.currentTarget.value)}
-        />
-        <button className="submit" type="submit" disabled={isLoading}>
-          {isLoading ? "Logging in..." : "Log In"}
-        </button>
-      </form>
-      <p className="center">
-        <Link to={`/signup`}>Need to signup?</Link>
-      </p>
+    <div className="login-page">
+      <div className="login">
+        {sessionStorage.getItem("token") ? (
+          <>
+            {toggleLoggedIn()}
+            <Redirect to="/dashboard" />
+          </>
+        ) : (
+          ""
+        )}
+        <form className="form" onSubmit={onSubmit}>
+          {error && <p className="error center">{error}</p>}
+          <input
+            type="text"
+            placeholder="username"
+            value={username}
+            onChange={e => setUsername(e.currentTarget.value)}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            autoComplete="new-password"
+            value={password}
+            onChange={e => setPassword(e.currentTarget.value)}
+          />
+          <button className="submit" type="submit" disabled={isLoading}>
+            {isLoading ? "Logging in..." : "Log In"}
+          </button>
+        </form>
+        <p className="center">
+          <Link to={`/signup`}>Need to signup?</Link>
+        </p>
+      </div>
     </div>
   );
 }
