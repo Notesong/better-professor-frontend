@@ -1,10 +1,12 @@
 // For displaying individual student cards
-import React from 'react';
+import React from "react";
+
+import StudentForm from "./StudentForm";
 
 export const Student = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return (
+    <div>
+      <StudentForm />
+    </div>
+  );
+};
