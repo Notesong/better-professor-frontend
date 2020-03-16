@@ -27,6 +27,15 @@ a {
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
+
+  .navbar {
+    display: flex;
+    align-items: center;
+
+    a {
+      margin: 0 1rem;
+    }
+  }
 }
 
 .login,
