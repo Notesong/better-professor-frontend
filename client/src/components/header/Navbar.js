@@ -6,7 +6,7 @@ import { GlobalContext } from "../../context/GlobalState";
 import { Logout } from "./Logout";
 
 function Navbar() {
-  const { loggedIn, toggleLoggedIn } = useContext(GlobalContext);
+  const { loggedIn } = useContext(GlobalContext);
 
   return (
     <div className="navbar">

@@ -74,38 +74,30 @@ export default function ReminderForm() {
   return (
     <div className="reminder-form">
       <form className="form" onSubmit={onSubmit}>
-        <h3 className="center">Set Reminder</h3>
+        <h3 className="center">Set a Reminder</h3>
         {error && <p className="error center">{error}</p>}
-        <label>
-          Title:
-          <input
-            type="text"
-            name="title"
-            onChange={e => setTitle(e.target.value)}
-            value={title}
-          />
-        </label>
-        <label>
-          Student:
-          <select
-            value={studentId}
-            onChange={e => setStudentId(e.target.value)}
-            required
-          >
-            <option value="self">Choose a student</option>
-            {/* maps over students to list all students the user can send a message to */}
-            {students.map(student => (
-              <option key={student.student_id} value={student.student_id}>
-                {student.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          Date:
-          {/* allows the user to select a date */}
-          <DateTime value={sendDate} onChange={e => setSendDate(e)} />
-        </label>
+        <input
+          type="text"
+          name="title"
+          placeholder="title"
+          onChange={e => setTitle(e.target.value)}
+          value={title}
+        />
+        <select
+          value={studentId}
+          onChange={e => setStudentId(e.target.value)}
+          required
+        >
+          <option value="self">choose a student</option>
+          {/* maps over students to list all students the user can send a message to */}
+          {students.map(student => (
+            <option key={student.student_id} value={student.student_id}>
+              {student.name}
+            </option>
+          ))}
+        </select>
+        {/* allows the user to select a date */}
+        <DateTime value={sendDate} onChange={e => setSendDate(e)} />
         <textarea
           value={message}
           onChange={e => setMessage(e.currentTarget.value)}
