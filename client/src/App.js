@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // Components
-import { Header } from "./components/Header";
+import { Header } from "./components/header/Header";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import { MentorDashboard } from "./components/MentorDashboard";
