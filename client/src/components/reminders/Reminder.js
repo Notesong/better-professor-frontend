@@ -24,10 +24,10 @@ const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
   // resets state variables to reset form
   const formReset = () => {
     showLoader(false);
-    setTitle(proptitle);
-    setMessage(propmessage);
+    setTitle(title);
+    setMessage(message);
     setStudentId(recipient);
-    setSendDate(propsendDate);
+    setSendDate(sendDate);
   };
 
   const onSubmit = e => {

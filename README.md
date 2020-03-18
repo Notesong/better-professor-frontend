@@ -1,6 +1,4 @@
-# Frontend
-
-Better Professor App Frontend
+# Better Professor App Frontend
 
 Product Vision:
 
