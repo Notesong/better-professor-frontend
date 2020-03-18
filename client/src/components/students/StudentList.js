@@ -1,27 +1,34 @@
 import React, { useState, useContext, useEffect } from "react";
+
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { logout } from "../../utils/logout";
 
 import Student from "./Student";
 
 import { GlobalContext } from "../../context/GlobalState";
 
 export const StudentList = () => {
-  const { students, setStudents } = useContext(GlobalContext);
+  const { toggleLoggedIn, students, setStudents } = useContext(GlobalContext);
   const [error, setError] = useState("");
 
   useEffect(() => {
     setError("");
-
-    // gets all the reminders from the API
     const getStudentList = async () => {
       await axiosWithAuth()
         .get(`/restricted/users/${sessionStorage.getItem("id")}/students/`)
         .then(res => {
-          console.log(res);
-          setStudents(res.data);
+          if (!res.data.message) {
+            setStudents(res.data);
+          }
         })
         .catch(err => {
-          setError("Error: Unable load reminders.");
+          if (err.response.status === 401) {
+            toggleLoggedIn();
+            logout();
+            window.location.href = "/";
+          } else {
+            setError("Error: Unable load students from database.");
+          }
         });
     };
     getStudentList();
@@ -34,8 +41,8 @@ export const StudentList = () => {
       <div className="student_list">
         {students.map(student => (
           <Student
-            key={student.user_id}
-            id={student.user_id}
+            key={student.student_id}
+            id={student.student_id}
             propname={student.name}
             propmajor={student.major}
             propemail={student.email}

@@ -52,14 +52,20 @@ export default (state, action) => {
         students: [action.payload, ...state.students]
       };
     case "DELETE_STUDENT":
+      const filtered_out_student = state.students.filter(
+        student => action.payload !== student.student_id
+      );
       return {
         ...state,
-        students: [action.payload, ...state.students]
+        students: filtered_out_student
       };
     case "EDIT_STUDENT":
+      const filtered_out_student_to_edit = state.students.filter(
+        student => action.payload.student_id !== student.student_id
+      );
       return {
         ...state,
-        students: [action.payload, ...state.students]
+        students: [...filtered_out_student_to_edit, action.payload]
       };
     default:
       return state;

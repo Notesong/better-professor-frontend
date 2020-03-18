@@ -20,10 +20,10 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
   // resets state variables to reset form
   const formReset = () => {
     showLoader(false);
-    setName(propname);
-    setMajor(propmajor);
-    setEmail(propemail);
-    setPhone(propphone);
+    setName(name);
+    setMajor(major);
+    setEmail(email);
+    setPhone(phone);
   };
 
   const onSubmit = e => {
@@ -31,16 +31,16 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
     setError("");
     showLoader(true);
 
-    // submit the edited reminder to the API
+    // submit the edited student to the API
     axiosWithAuth()
-      .put(`/restricted/users/${sessionStorage.getItem("id")}/messages/${id}`, {
+      .put(`/restricted/users/${sessionStorage.getItem("id")}/students/${id}`, {
         name: name,
         major: major,
         email: email,
         phone: phone
       })
       .then(res => {
-        editStudent(res.data.MessageUpdated);
+        editStudent(res.data.StudentUpdated);
         formReset();
         setIsEditing(false);
       })
@@ -50,14 +50,14 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
       });
   };
 
-  // show editing form to allow user to edit reminder
+  // show editing form to allow user to edit student
   const edit = e => {
     e.stopPropagation();
     e.preventDefault();
     setIsEditing(true);
   };
 
-  // cancel displaying edit reminder form
+  // cancel displaying edit student form
   const cancel = e => {
     e.stopPropagation();
     e.preventDefault();
@@ -65,8 +65,8 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
     setError("");
   };
 
-  // delete a reminder
-  function delReminder(id) {
+  // delete a student
+  function delStudent(id) {
     axiosWithAuth()
       .delete(
         `/restricted/users/${sessionStorage.getItem("id")}/students/${id}`
@@ -83,7 +83,7 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
     <div className="student">
       {!isEditing ? (
         <>
-          {/* the reminder itself */}
+          {/* the student itself */}
           <div className="top-of-student">
             <button onClick={edit} className="edit-button">
               Edit
@@ -92,7 +92,7 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
               className="student-delete-button"
               onClick={e => {
                 e.stopPropagation();
-                delReminder(id);
+                delStudent(id);
               }}
             >
               X
@@ -105,8 +105,8 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
           <button>Projects</button>
         </>
       ) : (
-        // reminder form to edit the reminder
-        // only shows if user wants to edit the reminder
+        // student form to edit the student
+        // only shows if user wants to edit the student
         <form className="edit-form" onSubmit={onSubmit}>
           <h3 className="center">Edit Student</h3>
           {error && <p className="error center">{error}</p>}
