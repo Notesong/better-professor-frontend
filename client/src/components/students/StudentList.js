@@ -22,13 +22,14 @@ export const StudentList = () => {
           }
         })
         .catch(err => {
-          if (err.response.status === 401) {
-            toggleLoggedIn();
-            logout();
-            window.location.href = "/";
-          } else {
-            setError("Error: Unable load students from database.");
+          if (err.response) {
+            if (err.response.status === 401) {
+              toggleLoggedIn();
+              logout();
+              window.location.href = "/";
+            }
           }
+          setError("Error: Unable load the students from the database.");
         });
     };
     getStudentList();
