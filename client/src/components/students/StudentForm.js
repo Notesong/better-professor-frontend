@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { logout } from "../../utils/logout";
 
 import { GlobalContext } from "../../context/GlobalState";
 
 export default function StudentForm() {
-  const { addStudent } = useContext(GlobalContext);
+  const { toggleLoggedIn, addStudent } = useContext(GlobalContext);
 
   const [name, setName] = useState("");
   const [major, setMajor] = useState("");
@@ -42,7 +43,14 @@ export default function StudentForm() {
         formReset();
       })
       .catch(err => {
-        setError("Unable to add reminder to database");
+        if (err.response) {
+          if (err.response.status === 401) {
+            toggleLoggedIn();
+            logout();
+            window.location.href = "/";
+          }
+        }
+        setError("Error: Unable to post the student to the database.");
         showLoader(false);
       });
   };

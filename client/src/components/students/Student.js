@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { logout } from "../../utils/logout";
 
 import { GlobalContext } from "../../context/GlobalState";
 
 const Student = ({ id, propname, propmajor, propemail, propphone }) => {
-  const { editStudent, deleteStudent } = useContext(GlobalContext);
+  const { toggleLoggedIn, editStudent, deleteStudent } = useContext(
+    GlobalContext
+  );
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -45,7 +48,14 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
         setIsEditing(false);
       })
       .catch(err => {
-        setError("Error: Unable to update student.");
+        if (err.response) {
+          if (err.response.status === 401) {
+            toggleLoggedIn();
+            logout();
+            window.location.href = "/";
+          }
+        }
+        setError("Error: Unable to update the student in the database.");
         showLoader(false);
       });
   };
@@ -75,7 +85,14 @@ const Student = ({ id, propname, propmajor, propemail, propphone }) => {
         deleteStudent(id);
       })
       .catch(err => {
-        setError("Error: Unable delete student.");
+        if (err.response) {
+          if (err.response.status === 401) {
+            toggleLoggedIn();
+            logout();
+            window.location.href = "/";
+          }
+        }
+        setError("Error: Unable to delete the student from the database.");
       });
   }
 

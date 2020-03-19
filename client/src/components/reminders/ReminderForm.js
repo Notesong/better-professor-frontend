@@ -1,14 +1,18 @@
 import React, { useState, useContext, useEffect } from "react";
 import DateTime from "react-datetime";
 import Moment from "moment";
+
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { logout } from "../../utils/logout";
 
 import { GlobalContext } from "../../context/GlobalState";
 
 import "../../styles/react-datetime.scss";
 
 export default function ReminderForm() {
-  const { addReminder, students, setStudents } = useContext(GlobalContext);
+  const { toggleLoggedIn, addReminder, students, setStudents } = useContext(
+    GlobalContext
+  );
 
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
@@ -33,7 +37,14 @@ export default function ReminderForm() {
           }
         })
         .catch(err => {
-          setError("Error: Unable to retrieve students.");
+          if (err.response) {
+            if (err.response.status === 401) {
+              toggleLoggedIn();
+              logout();
+              window.location.href = "/";
+            }
+          }
+          setError("Error: Unable load the students from the database.");
         });
     };
     getStudentList();
@@ -66,7 +77,14 @@ export default function ReminderForm() {
         formReset();
       })
       .catch(err => {
-        setError("Unable to add reminder to database.");
+        if (err.response) {
+          if (err.response.status === 401) {
+            toggleLoggedIn();
+            logout();
+            window.location.href = "/";
+          }
+        }
+        setError("Error: Unable to add the reminder to the database.");
         showLoader(false);
       });
   };

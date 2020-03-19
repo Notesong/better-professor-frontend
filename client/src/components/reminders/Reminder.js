@@ -3,13 +3,16 @@ import DateTime from "react-datetime";
 import Moment from "moment";
 
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { logout } from "../../utils/logout";
 
 import { GlobalContext } from "../../context/GlobalState";
 
 import "../../styles/react-datetime.scss";
 
 const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
-  const { editReminder, deleteReminder, students } = useContext(GlobalContext);
+  const { toggleLoggedIn, editReminder, deleteReminder, students } = useContext(
+    GlobalContext
+  );
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -49,7 +52,14 @@ const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
         setIsEditing(false);
       })
       .catch(err => {
-        setError("Unable to update reminder.");
+        if (err.response) {
+          if (err.response.status === 401) {
+            toggleLoggedIn();
+            logout();
+            window.location.href = "/";
+          }
+        }
+        setError("Error: Unable to update the reminder in the database.");
         showLoader(false);
       });
   };
@@ -81,7 +91,14 @@ const Reminder = ({ id, proptitle, propmessage, propsendDate, recipient }) => {
         deleteReminder(reminder_id);
       })
       .catch(err => {
-        setError("Error: Unable delete reminder.");
+        if (err.response) {
+          if (err.response.status === 401) {
+            toggleLoggedIn();
+            logout();
+            window.location.href = "/";
+          }
+        }
+        setError("Error: Unable to delete the reminder from the database.");
       });
   }
 

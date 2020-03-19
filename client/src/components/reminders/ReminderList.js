@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
+
 import { axiosWithAuth } from "../../utils/axiosWithAuth";
+import { logout } from "../../utils/logout";
 
 import Reminder from "./Reminder";
 
 import { GlobalContext } from "../../context/GlobalState";
 
 export const ReminderList = () => {
-  const { reminders, setReminders } = useContext(GlobalContext);
+  const { toggleLoggedIn, reminders, setReminders } = useContext(GlobalContext);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -20,7 +22,14 @@ export const ReminderList = () => {
           setReminders(res.data);
         })
         .catch(err => {
-          setError("Error: Unable load reminders.");
+          if (err.response) {
+            if (err.response.status === 401) {
+              toggleLoggedIn();
+              logout();
+              window.location.href = "/";
+            }
+          }
+          setError("Error: Unable load the reminders from the database.");
         });
     };
     getReminderList();
